@@ -1,0 +1,22 @@
+##################################################################
+#                                                                #
+# plugin made by quandz, report bug at phungthequan030@gmail.com #
+#                                                                #
+##################################################################
+
+
+country: "vietnam" #usa, vietnam, russia,...
+
+console_prefix: "[COVID-19]"
+
+delay: 30 #second
+
+messages:
+  - "       &c&lSố ca nhiễm Covid-10"
+  - "       &7&o({date_time})"
+  - "&7Tổng số ca nhiễm: &a{cases}"
+  - "&7Tổng số ca tử vong: &a{death}"
+  - "&7Tổng số phục hồi: &a{recovered}"
+  - "&7Số ca mắc mới: &a{new_cases}"
+  - "&7Số ca tử vong mới: &a{new_death}"
+  - "&cHãy thực hiện chuẩn thông điệp 5k của bộ y tế"
