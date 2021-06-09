@@ -1,5 +1,6 @@
 # Covid19
 
+### Plugin thông báo số ca mắc bệnh, tử vong,... do covid-19
 
 ## Commands
 Reload: /covid19 reload (covid19.admin)
