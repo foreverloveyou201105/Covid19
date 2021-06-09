@@ -33,7 +33,7 @@ public class Covid {
         return str;
     }
 
-    private boolean getData() throws IOException {
+    private void getData() throws IOException {
         URL url = new URL(sURL);
         URLConnection request = url.openConnection();
         request.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
@@ -43,10 +43,6 @@ public class Covid {
         JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
         JsonObject obj = root.getAsJsonObject();
 
-        if (obj.get("Last Update").getAsString().equalsIgnoreCase(this.update_time)) {
-            return false;
-        }
-
         update_time = blankCheck(obj.get("Last Update").getAsString());
         cases = blankCheck(obj.get("Total Cases_text").getAsString());
         death = blankCheck(obj.get("Total Deaths_text").getAsString());
@@ -54,29 +50,27 @@ public class Covid {
         new_cases = blankCheck(obj.get("New Cases_text").getAsString());
         new_death = blankCheck(obj.get("New Deaths_text").getAsString());
 
-        return true;
     }
 
-    private void parseMessage() throws IOException {
+    private void parseMessage() {
 
-        if(getData()) {
-            if(!messageParsed.isEmpty()) {
-                messageParsed.clear();
-            }
-            for(String s: main.getBroadcast_messages()) {
-                s = ChatColor.translateAlternateColorCodes('&', s);
-                s = s.replace("{date_time}", update_time)
-                        .replace("{cases}", cases)
-                        .replace("{death}", death)
-                        .replace("{recovered}", recovered)
-                        .replace("{new_cases}", new_cases)
-                        .replace("{new_death}", new_death);
-                messageParsed.add(s);
-            }
+        if (!messageParsed.isEmpty()) {
+            messageParsed.clear();
+        }
+        for (String s : main.getBroadcast_messages()) {
+            s = ChatColor.translateAlternateColorCodes('&', s);
+            s = s.replace("{date_time}", update_time)
+                    .replace("{cases}", cases)
+                    .replace("{death}", death)
+                    .replace("{recovered}", recovered)
+                    .replace("{new_cases}", new_cases)
+                    .replace("{new_death}", new_death);
+            messageParsed.add(s);
         }
     }
 
     public void broadcast() throws IOException {
+        getData();
         parseMessage();
 
         new BukkitRunnable() {
