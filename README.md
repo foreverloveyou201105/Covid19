@@ -5,7 +5,7 @@
 Reload: /covid19 reload (covid19.admin)
 
 
-## Covid 19 Announcer for Minecraft
+## Covid 19 Broadcast for Minecraft
 
 Tested version: Spigot 1.12.2
 Author: quandz
