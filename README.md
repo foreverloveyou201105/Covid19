@@ -1,13 +1,11 @@
 # Covid19 Broadcast for Minecraft
 
-### Plugin thông báo số ca mắc bệnh, tử vong,... do covid-19
+Plugin thông báo số ca mắc bệnh, tử vong,... do covid-19
 
 ## Commands
 Reload: /covid19 reload (covid19.admin)
 
-
 ## Version
-
 Tested version: Spigot 1.12.2
 Author: quandz
 
