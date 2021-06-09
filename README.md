@@ -1,5 +1,10 @@
 # Covid19
 
+
+## Commands
+Reload: /covid19 reload (covid19.admin)
+
+
 ## Covid 19 Announcer for Minecraft
 
 Tested version: Spigot 1.12.2
