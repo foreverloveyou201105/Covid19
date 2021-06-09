@@ -4,9 +4,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
 
+
 public class Task extends BukkitRunnable {
 
-    private Covid c;
+    private final Covid c;
 
     public Task(Covid c) {
         this.c = c;

@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,7 +24,14 @@ public class Covid {
 
     //return true if data is new
     //
-    // return false if date is old
+    // return false if data is old
+
+    private String blankCheck(String str) {
+        if (str.equalsIgnoreCase("")) {
+            str = "0";
+        }
+        return str;
+    }
 
     private boolean getData() throws IOException {
         URL url = new URL(sURL);
@@ -35,16 +43,17 @@ public class Covid {
         JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent()));
         JsonObject obj = root.getAsJsonObject();
 
-        if(obj.get("Last Update").getAsString().equalsIgnoreCase(this.update_time)) {
+        if (obj.get("Last Update").getAsString().equalsIgnoreCase(this.update_time)) {
             return false;
         }
 
-        update_time = obj.get("Last Update").getAsString();
-        cases = obj.get("Total Cases_text").getAsString();
-        death = obj.get("Total Deaths_text").getAsString();
-        recovered = obj.get("Total Recovered_text").getAsString();
-        new_cases = obj.get("New Cases_text").getAsString();
-        new_death = obj.get("New Deaths_text").getAsString();
+        update_time = blankCheck(obj.get("Last Update").getAsString());
+        cases = blankCheck(obj.get("Total Cases_text").getAsString());
+        death = blankCheck(obj.get("Total Deaths_text").getAsString());
+        recovered = blankCheck(obj.get("Total Recovered_text").getAsString());
+        new_cases = blankCheck(obj.get("New Cases_text").getAsString());
+        new_death = blankCheck(obj.get("New Deaths_text").getAsString());
+
         return true;
     }
 
@@ -69,6 +78,15 @@ public class Covid {
 
     public void broadcast() throws IOException {
         parseMessage();
-        messageParsed.forEach(Bukkit::broadcastMessage);
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                messageParsed.forEach(Bukkit::broadcastMessage);
+                if (main.sound_isEnable()) {
+                    Bukkit.getOnlinePlayers().forEach((p) -> p.playSound(p.getLocation(), main.getSound(), 1, 1));
+                }
+            }
+        }.runTask(main);
     }
 }
