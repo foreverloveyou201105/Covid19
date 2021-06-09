@@ -10,8 +10,8 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class Covid {
@@ -35,7 +35,7 @@ public class Covid {
 
     private void getData() throws IOException {
         URL url = new URL(sURL);
-        URLConnection request = url.openConnection();
+        HttpURLConnection request = (HttpURLConnection) url.openConnection();
         request.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
         request.connect();
 
@@ -49,7 +49,7 @@ public class Covid {
         recovered = blankCheck(obj.get("Total Recovered_text").getAsString());
         new_cases = blankCheck(obj.get("New Cases_text").getAsString());
         new_death = blankCheck(obj.get("New Deaths_text").getAsString());
-
+        request.disconnect();
     }
 
     private void parseMessage() {
