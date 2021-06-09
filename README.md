@@ -1,6 +1,6 @@
 # Covid19
 
-##Covid 19 Announcer for Minecraft
+## Covid 19 Announcer for Minecraft
 
 Tested version: 1.12.2
 
