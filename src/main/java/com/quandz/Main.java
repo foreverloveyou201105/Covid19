@@ -30,6 +30,7 @@ public final class Main extends JavaPlugin {
         loadConfig();
         c = new Covid();
         new Task(c).runTaskTimerAsynchronously(this, 20, 20 * delay);
+        registerPlaceholder();
         console = Bukkit.getConsoleSender();
         console.sendMessage(console_prefix + " Plugin made by quandz, report bug add phungthequan030@gmail.com");
     }
@@ -38,6 +39,13 @@ public final class Main extends JavaPlugin {
     public void onDisable() {
         console.sendMessage(console_prefix + " Plugin da tat");
         console.sendMessage(console_prefix + " Plugin made by quandz, report bug add phungthequan030@gmail.com");
+    }
+
+    public void registerPlaceholder() {
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
+        new Placeholders().register();
     }
 
     public void loadConfig() {

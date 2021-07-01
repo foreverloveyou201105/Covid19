@@ -18,9 +18,10 @@ public class Covid {
 
     Main main = Main.getMain();
     String country = main.getCountry();
-    String sURL = "https://covid-19.dataflowkit.com/v1/" + country;
-    String cases, death, recovered, new_cases, new_death, update_time;
     ArrayList<String> messageParsed = new ArrayList<>();
+
+    private static String cases, death, recovered, new_cases, new_death, update_time;
+    private final String sURL = "https://covid-19.dataflowkit.com/v1/" + country;
 
     //return true if data is new
     //
@@ -82,5 +83,33 @@ public class Covid {
                 }
             }
         }.runTask(main);
+    }
+
+    public static String getCases() {
+        return cases;
+    }
+
+    public static String getDeath() {
+        return death;
+    }
+
+    public static String getRecovered() {
+        return recovered;
+    }
+
+    public static String getNew_cases() {
+        return new_cases;
+    }
+
+    public static String getNew_death() {
+        return new_death;
+    }
+
+    public static String getUpdate_time() {
+        return update_time;
+    }
+
+    public String getsURL() {
+        return sURL;
     }
 }

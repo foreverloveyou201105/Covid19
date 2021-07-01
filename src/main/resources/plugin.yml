@@ -3,6 +3,8 @@ version: @version@
 main: com.quandz.Main
 authors: [ quandz ]
 description: plugin cap nhat thong tin nguoi bi covid 19
+softdepend:
+  - PlaceholderAPI
 
 commands:
   covid19:
