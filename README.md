@@ -1,6 +1,7 @@
 # Covid19 Broadcast for Minecraft
 
 Plugin thông báo số ca mắc bệnh, tử vong,... do covid-19
+
 Required: PlaceholderAPI
 
 ## Commands
