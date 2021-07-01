@@ -11,11 +11,17 @@ Tested version: Spigot 1.12.2
 Author: quandz
 
 ## Placeholders
+
 %covid19_total_cases%
+
 %covid19_total_death%
+
 %covid19_total_recovered%
+
 %covid19_new_cases%
+
 %covid19_new_death%
+
 %covid19_update_time%
 
 # **Install**
