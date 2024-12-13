@@ -1,4 +1,4 @@
-# Covid19 Broadcast for Minecraft
+# [OUTDATED] Covid-19 Cases Announcement Minecraft
 
 Plugin thông báo số ca mắc bệnh, tử vong,... do covid-19
 
