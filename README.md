@@ -10,7 +10,7 @@ Reload: /covid19 reload (covid19.admin)
 ## Version
 Tested version: Spigot 1.12.2
 
-Author: quandz
+Author: quanphungg_
 
 ## Placeholders
 
